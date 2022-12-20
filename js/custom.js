@@ -5,7 +5,7 @@
   speed: 300,
   autoplay: true,
   autoplaySpeed: 2000,
-  slidesToShow: 3,
+  slidesToShow: 4,
   slidesToScroll: 1,
   responsive: [
     {
@@ -48,3 +48,35 @@ function myFunction() {
     moreText.style.display = "inline";
   }
 }
+function reveal() {
+  var reveals = document.querySelectorAll(".reveal");
+  for (var i = 0; i < reveals.length; i++) {
+    var windowHeight = window.innerHeight;
+    var elementTop = reveals[i].getBoundingClientRect().top;
+    var elementVisible = 150;
+    if (elementTop < windowHeight - elementVisible) {
+      reveals[i].classList.add("active");
+    } else {
+      reveals[i].classList.remove("active");
+    }
+  }
+}
+window.addEventListener("scroll", reveal);
+
+$(document).ready(function(){
+  // hamburger-toggle
+  $('.header-menu-toggle').click(function(){
+      $(this).toggleClass('open');
+      $('#header-nav-toggle').slideToggle();
+  });
+});
+// pricing-page-slider
+$('.price-slider').slick({
+  dots: true,
+  infinite: true,
+  speed: 300,
+  autoplay: true,
+  autoplaySpeed: 2000,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+});
